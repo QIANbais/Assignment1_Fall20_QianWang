@@ -17,10 +17,10 @@ namespace Assignment1_Fall20_QianWang
         {
             // Question 1: Print Triangle based on user input.
             Console.WriteLine("Please enter a number to display a pyrimad...");
-            string user_input_1 = Console.ReadLine();
+            string user_input_1 = Console.ReadLine();  // get user input
             try
             {
-                int user_num_1 = int.Parse(user_input_1);
+                int user_num_1 = int.Parse(user_input_1);  // parse data type
                 PrintTriangle(user_num_1); // Call the method
             }
             catch (FormatException)
@@ -33,12 +33,12 @@ namespace Assignment1_Fall20_QianWang
 
 
             // Question 2: Print out n terms of odd series and their sum.
-            Console.WriteLine("Please enter a number to display a series of odd numbers and their sum...");
-            string user_input_2 = Console.ReadLine();
+            Console.WriteLine("Please enter a number to display a series of odd numbers and their sum..."); // Ask user to enter a number
+            string user_input_2 = Console.ReadLine();  // get user input
             try
             {
-                int user_num_2 = int.Parse(user_input_2);
-                PrintSeriesSum(user_num_2); // Call the method
+                int user_num_2 = int.Parse(user_input_2);  // parse user input
+                PrintSeriesSum(user_num_2); // Call the method and display the output
             }
             catch (FormatException)
             {
@@ -90,9 +90,9 @@ namespace Assignment1_Fall20_QianWang
             // Question 6: Find minimun number of edits required to convert string 1 to string 2.
             string str1 = "sunday";
             string str2 = "saturday";
-            Console.WriteLine("String 1 is " + str1 + " and string 2 is " + str2 + ".");
+            Console.WriteLine("String 1 is " + str1 + " and string 2 is " + str2 + ".");  // Display two strings to the screen
             int minEdits = StringEdit(str1, str2);
-            Console.WriteLine("The minimum number of edits required to convert " + str1 + " to " + str2 + " is " + minEdits + ".");
+            Console.WriteLine("The minimum number of edits required to convert " + str1 + " to " + str2 + " is " + minEdits + ".");  // Display the result
             Console.WriteLine();
         }
 
@@ -102,14 +102,14 @@ namespace Assignment1_Fall20_QianWang
             try
             {
                 // Initialize spaces before *
-                int spaces = num;
+                int spaces = num;  // Initialize the spaces for the first row
 
                 // For loop to handle number of rows
-                for (int i = 1; i < 2 * num; i+=2)
+                for (int i = 1; i < 2 * num; i+=2) // Initialize i from 1 and increment by 2 each time
                 {
-                    Console.Write((" ".PadLeft(spaces)));
-                    Console.Write(String.Concat(Enumerable.Repeat("*",i)));
-                    spaces -= 1;
+                    Console.Write((" ".PadLeft(spaces)));  // Print out spaces for each row first
+                    Console.Write(String.Concat(Enumerable.Repeat("*",i)));  // Print out number of stars for each row after spaces
+                    spaces -= 1;  // Decrement space by one each iteration
                     Console.WriteLine();
                 }
                 
@@ -125,15 +125,15 @@ namespace Assignment1_Fall20_QianWang
         {
             try
             {
-                int sum = 0;
+                int sum = 0; // Initialize a variable to store the sum value
                 Console.Write("The odd numbers are: ");
                 for (int i = 0; i < n2; i++)
                 {
-                    Console.Write(2 * i + 1 + " ");
-                    sum += 2 * i + 1;
-                }
+                    Console.Write(2 * i + 1 + " ");  // Each odd number is equal to 2 times its index plus one
+                    sum += 2 * i + 1;  // Add each value of the odd number to sum
+                }  
                 Console.WriteLine();
-                Console.WriteLine("The sum of the odd numbers is: " + sum);
+                Console.WriteLine("The sum of the odd numbers is: " + sum); // Display the sum 
                 
             }
             catch
@@ -154,22 +154,23 @@ namespace Assignment1_Fall20_QianWang
                     return true;
                 }
 
-                // Check whether it is an increasing array
+                // Cases when the first element is less or equal to the last one, Check whether it is an increasing array
                 if (n[0] <= n[n.Length - 1])
                 {
                     for (int i = 1; i < n.Length; i++)
                     {
-                        if (n[i - 1] > n[i])
+                        if (n[i - 1] > n[i]) // If the previous element is greater than the current oone return falsse
                         {
                             return false;
                         }
                     }
                 }
+                // If the first elemnt is greater than the last one, check whether it is decreasing
                 else
                 {
                     for (int i = 1; i < n.Length; i++)
                     {
-                        if (n[i - 1] < n[i])
+                        if (n[i - 1] < n[i])   // If the previous element is less than the current oone return falsse
                         {
                             return false;
                         }
@@ -194,7 +195,7 @@ namespace Assignment1_Fall20_QianWang
                 if (k < 0)
                 {
                     return result;
-                }
+                } // Corner case when k is less then 0, return 0. The absolute different cannot be a negative number
 
                 Hashtable hash = new Hashtable(); // Initialize a new hashtable to store key-value pairs
 
@@ -284,7 +285,7 @@ namespace Assignment1_Fall20_QianWang
                 int n = str2.Length + 1;
                 int[,] dp = new int[m, n];
 
-                // For loop to dill dp[][] in the bottom up manner
+                // For loop to dill dp[ , ] in the bottom up manner
                 for (int i = 1; i < m; i++)
                 {
                     dp[i, 0] = i;  // If the second string is empty, only option is to remove all characters
