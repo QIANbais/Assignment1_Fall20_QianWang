@@ -80,17 +80,17 @@ namespace Assignment1_Fall20_QianWang
             // Question 5: Calculate the time of typing a given word
             string keyboard = "abcdefghijklmnopqrstuvwxyz";
             string word = "dis";
-            Console.WriteLine("The keyboard is " + keyboard + " and the word is " + word);
-            Console.WriteLine("It takes " + BullKeyBoard(keyboard, word) + " seconds to type " + word + ".");
+            Console.WriteLine("The keyboard is " + keyboard + " and the word is " + word + "."); // Display the keyboard and word to the user
+            Console.WriteLine("It takes " + BullKeyBoard(keyboard, word) + " seconds to type " + word + "."); // Dispay the output
             Console.WriteLine();
             Console.WriteLine();
             Console.ReadKey();
 
 
             // Question 6: Find minimun number of edits required to convert string 1 to string 2.
-            string str1 = "intention";
-            string str2 = "execution";
-            Console.WriteLine("String one is " + str1 + " and string two is " + str2 + ".");
+            string str1 = "sunday";
+            string str2 = "saturday";
+            Console.WriteLine("String 1 is " + str1 + " and string 2 is " + str2 + ".");
             int minEdits = StringEdit(str1, str2);
             Console.WriteLine("The minimum number of edits required to convert " + str1 + " to " + str2 + " is " + minEdits + ".");
             Console.WriteLine();
@@ -203,10 +203,10 @@ namespace Assignment1_Fall20_QianWang
                     if (!hash.ContainsKey(item))
                     {
                         hash.Add(item, 1);
-                    }
+                    } // If the value is not in the hashtable store it into the table
                     else
                     {
-                        hash[item] = (int)hash[item] + 1;
+                        hash[item] = (int)hash[item] + 1; // if the value is in the hashtable. increment the value by 1
                     }
                 } // Add all elements to the hashtable
 
@@ -279,33 +279,34 @@ namespace Assignment1_Fall20_QianWang
                     return str1.Length;
                 } // If string 2 is empty return the length of string 1
                 
-                // Initialize variables
-                int m = str1.Length + 1;
+                // Initialize a table to store the results of subproblems
+                int m = str1.Length + 1; 
                 int n = str2.Length + 1;
                 int[,] dp = new int[m, n];
 
-                // For loop
+                // For loop to dill dp[][] in the bottom up manner
                 for (int i = 1; i < m; i++)
                 {
-                    dp[i, 0] = i;
+                    dp[i, 0] = i;  // If the second string is empty, only option is to remove all characters
                 }
                 for (int i = 1; i < n; i++)
                 {
-                    dp[0, i] = i;
+                    dp[0, i] = i;  // If the first string is empty, insert all characters of second string
                 }
                 for (int i = 1; i < m; i++)
                 {
                     for (int j = 1; j < n; j++)
                     {
-                        int min = Math.Min(dp[i - 1, j - 1], Math.Min(dp[i - 1, j], dp[i, j - 1]));
+                        //int min = Math.Min(dp[i - 1, j - 1], Math.Min(dp[i - 1, j], dp[i, j - 1]));
                         if (str1[i - 1] == str2[j - 1])
                         {
-                            dp[i, j] = dp[i - 1, j - 1];
+                            dp[i, j] = dp[i - 1, j - 1]; // If last characters are the same, decrement index and recur for remaining string
                         }
                         else
                         {
+                            int min = Math.Min(dp[i - 1, j - 1], Math.Min(dp[i - 1, j], dp[i, j - 1])); // Find the min steps of insert=dp[i, j-1], remove=dp[i-1,j], and replace = dp[i - 1, j - 1]
                             dp[i, j] = 1 + min;
-                        }
+                        } // If the last characters do not match
                     }
                 }
                 return dp[m - 1, n - 1];
