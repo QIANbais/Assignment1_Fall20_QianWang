@@ -339,7 +339,7 @@ namespace Assignment1_Fall20_QianWang
             }
             catch
             {
-                Console.WriteLine("Exception occured while computing DiffPairs()");
+                Console.WriteLine("Exception occured while computing RandomArray()");
             }
             return result;
         }
