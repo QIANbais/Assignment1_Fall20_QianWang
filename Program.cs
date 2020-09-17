@@ -17,10 +17,10 @@ namespace Assignment1_Fall20_QianWang
         {
             // Question 1: Print Triangle based on user input.
             Console.WriteLine("Please enter a number to display a pyrimad...");
-            string user_input_1 = Console.ReadLine();  // get user input
+            string user_input_1 = Console.ReadLine();  //Gget user input
             try
             {
-                int user_num_1 = int.Parse(user_input_1);  // parse data type
+                int user_num_1 = int.Parse(user_input_1);  // Parse data type
                 PrintTriangle(user_num_1); // Call the method
             }
             catch (FormatException)
@@ -29,15 +29,15 @@ namespace Assignment1_Fall20_QianWang
             }
             Console.WriteLine();
             Console.WriteLine();
-            Console.ReadKey();
+            Console.ReadKey(true);
 
 
             // Question 2: Print out n terms of odd series and their sum.
             Console.WriteLine("Please enter a number to display a series of odd numbers and their sum..."); // Ask user to enter a number
-            string user_input_2 = Console.ReadLine();  // get user input
+            string user_input_2 = Console.ReadLine();  // Get user input
             try
             {
-                int user_num_2 = int.Parse(user_input_2);  // parse user input
+                int user_num_2 = int.Parse(user_input_2);  // Parse user input
                 PrintSeriesSum(user_num_2); // Call the method and display the output
             }
             catch (FormatException)
@@ -50,13 +50,13 @@ namespace Assignment1_Fall20_QianWang
 
 
             // Question 3: Print out whehter an array is monotonic
-            Console.WriteLine("Please enter array length...");
-            string user_input_3 = Console.ReadLine();
-            int user_num_3 = int.Parse(user_input_3);
+            Console.WriteLine("Please enter array length...");   // Ask for user input
+            string user_input_3 = Console.ReadLine();            // Get user input
+            int user_num_3 = int.Parse(user_input_3);            // Convert to int type
             Console.WriteLine("Please enter a number as the lower bound of the array..."); // Ask user to enter a lower bound of the array
-            string user_min = Console.ReadLine();
+            string user_min = Console.ReadLine();               // Get user input
             Console.WriteLine("Please enter a number as the upper bound of the array..."); // Ask user to enter an upper bound of the array
-            string user_max = Console.ReadLine();
+            string user_max = Console.ReadLine();               // Get user input
             int lower_bound = int.Parse(user_min);  // Convert to integer
             int upper_bound = int.Parse(user_max);  // Convert to integer
             int[] random_array = RandomArray(lower_bound, upper_bound, user_num_3); // Generate an array according to user input
@@ -78,8 +78,8 @@ namespace Assignment1_Fall20_QianWang
 
 
             // Question 5: Calculate the time of typing a given word
-            string keyboard = "abcdefghijklmnopqrstuvwxyz";
-            string word = "dis";
+            string keyboard = "abcdefghijklmnopqrstuvwxyz";   // Initialize a keyboard
+            string word = "dis";                              // Initialize a word
             Console.WriteLine("The keyboard is " + keyboard + " and the word is " + word + "."); // Display the keyboard and word to the user
             Console.WriteLine("It takes " + BullKeyBoard(keyboard, word) + " seconds to type " + word + "."); // Dispay the output
             Console.WriteLine();
@@ -88,10 +88,10 @@ namespace Assignment1_Fall20_QianWang
 
 
             // Question 6: Find minimun number of edits required to convert string 1 to string 2.
-            string str1 = "sunday";
-            string str2 = "saturday";
+            string str1 = "sunday";       // Initialize string 1
+            string str2 = "saturday";     // Initialize string 2
             Console.WriteLine("String 1 is " + str1 + " and string 2 is " + str2 + ".");  // Display two strings to the screen
-            int minEdits = StringEdit(str1, str2);
+            int minEdits = StringEdit(str1, str2);    // Call the method and assign the result to minEdits
             Console.WriteLine("The minimum number of edits required to convert " + str1 + " to " + str2 + " is " + minEdits + ".");  // Display the result
             Console.WriteLine();
         }
@@ -109,7 +109,7 @@ namespace Assignment1_Fall20_QianWang
                 {
                     Console.Write((" ".PadLeft(spaces)));  // Print out spaces for each row first
                     Console.Write(String.Concat(Enumerable.Repeat("*",i)));  // Print out number of stars for each row after spaces
-                    spaces -= 1;  // Decrement space by one each iteration
+                    spaces -= 1;  // Decrement space by one after each iteration
                     Console.WriteLine();
                 }
                 
@@ -126,7 +126,7 @@ namespace Assignment1_Fall20_QianWang
             try
             {
                 int sum = 0; // Initialize a variable to store the sum value
-                Console.Write("The odd numbers are: ");
+                Console.Write("The odd numbers are: ");  // Display the odd number generated
                 for (int i = 0; i < n2; i++)
                 {
                     Console.Write(2 * i + 1 + " ");  // Each odd number is equal to 2 times its index plus one
@@ -339,7 +339,7 @@ namespace Assignment1_Fall20_QianWang
             }
             catch
             {
-                Console.WriteLine("Exception occured while computing DiffPairs()");
+                Console.WriteLine("Exception occured while computing RandomArray()");
             }
             return result;
         }
